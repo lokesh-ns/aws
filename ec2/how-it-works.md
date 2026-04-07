@@ -1,18 +1,2 @@
-# How ec2 Works
+# How it works
 
-## Core Concept
-_Explain the key idea behind ec2._
-
-## Key Components
-| Component | Description |
-|-----------|-------------|
-| - | - |
-
-## How It Fits Together
-```
-Add a simple text diagram here
-```
-
-## Things to Remember
-- Key point 1
-- Key point 2

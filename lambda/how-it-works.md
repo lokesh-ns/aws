@@ -1,18 +1,61 @@
-# How lambda Works
+# How it works
 
-## Core Concept
-_Explain the key idea behind lambda._
+## What is AWS Lambda?
 
-## Key Components
-| Component | Description |
-|-----------|-------------|
-| - | - |
+AWS Lambda is a **serverless compute service** that allows you to run code **without managing servers**.
 
-## How It Fits Together
+#### 🔹 Key Concept
+
+* You provide **code**
+* Lambda **executes it**
+* Returns **output**
+
+#### 🔹 Supported Languages
+
+* Python
+* Java
+* Node.js
+* Go
+
+***
+
+### 🔄 Lambda vs EC2
+
+| Feature           | Lambda            | EC2                |
+| ----------------- | ----------------- | ------------------ |
+| Server Management | ❌ Not required    | ✅ Required         |
+| Scaling           | Auto              | Manual             |
+| Billing           | Pay per execution | Pay per uptime     |
+| Setup             | Instant           | Needs provisioning |
+
+***
+
+### ✅ Advantages
+
+* No server setup
+* No start/stop management
+* Pay-as-you-use
+* Fully serverless
+
+
+
+## ⚙️ How Lambda Works in Real Time
+
+#### 🔄 Execution Flow
+
 ```
-Add a simple text diagram here
+Event → Trigger → Lambda → Execution → Response → Logs
 ```
 
-## Things to Remember
-- Key point 1
-- Key point 2
+## 🔥 Real-Time Example (Very Important)
+
+### 🧩 Scenario: Image Processing App
+
+1. User uploads image to S3
+2. S3 triggers Lambda
+3. Lambda:
+   * Resizes image
+   * Saves new image to another bucket
+4. Logs stored in CloudWatch
+
+👉 No server, no scaling issues
