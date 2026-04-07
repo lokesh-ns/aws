@@ -5,14 +5,14 @@
 
 ## Compute
 
-* [EC2](compute/ec2/README.md)
-  * [How it works](compute/ec2/how-it-works.md)
-  * [Execution in AWS](compute/ec2/execution-in-aws.md)
-  * [Execution in Terraform](compute/ec2/execution-in-terraform.md)
-* [Lambda](compute/lambda/README.md)
-  * [How it works](compute/lambda/how-it-works.md)
-  * [Execution in AWS](compute/lambda/execution-in-aws.md)
-  * [Execution in Terraform](compute/lambda/execution-in-terraform.md)
+* [EC2](EC2/README.md)
+  * [How it works](EC2/how-it-works.md)
+  * [Execution in AWS](EC2/execution-aws.md)
+  * [Execution in Terraform](EC2/execution-terraform.md)
+* [Lambda](Lambda/README.md)
+  * [How it works](Lambda/how-it-works.md)
+  * [Execution in AWS](Lambda/execution-aws.md)
+  * [Execution in Terraform](Lambda/execution-terraform.md)
 * [ASG](ASG/README.md)
   * [How it works](ASG/how-it-works.md)
   * [Execution in AWS](ASG/execution-aws.md)
@@ -24,10 +24,10 @@
 
 ## Networking
 
-* [VPC](networking/vpc/README.md)
-  * [How it works](networking/vpc/how-it-works.md)
-  * [Execution in AWS](networking/vpc/execution-in-aws.md)
-  * [Execution in Terraform](networking/vpc/execution-in-terraform.md)
+* [VPC](VPC/README.md)
+  * [How it works](VPC/how-it-works.md)
+  * [Execution in AWS](VPC/execution-aws.md)
+  * [Execution in Terraform](VPC/execution-terraform.md)
 * [ALB](ALB/README.md)
   * [How it works](ALB/how-it-works.md)
   * [Execution in AWS](ALB/execution-aws.md)
@@ -39,18 +39,18 @@
 
 ## Storage & Monitoring
 
-* [EBS](storage-and-monitoring/ebs/README.md)
-  * [How it works](storage-and-monitoring/ebs/how-it-works.md)
-  * [Execution in AWS](storage-and-monitoring/ebs/execution-in-aws.md)
-  * [Execution in Terraform](storage-and-monitoring/ebs/execution-in-terraform.md)
-* [CloudWatch](storage-and-monitoring/cloudwatch/README.md)
-  * [How it works](storage-and-monitoring/cloudwatch/how-it-works.md)
-  * [Execution in AWS](storage-and-monitoring/cloudwatch/execution-in-aws.md)
-  * [Execution in Terraform](storage-and-monitoring/cloudwatch/execution-in-terraform.md)
+* [EBS](EBS/README.md)
+  * [How it works](EBS/how-it-works.md)
+  * [Execution in AWS](EBS/execution-aws.md)
+  * [Execution in Terraform](EBS/execution-terraform.md)
+* [CloudWatch](CloudWatch/README.md)
+  * [How it works](CloudWatch/how-it-works.md)
+  * [Execution in AWS](CloudWatch/execution-aws.md)
+  * [Execution in Terraform](CloudWatch/execution-terraform.md)
 
 ## Identity
 
-* [IAM](identity/iam/README.md)
-  * [How it works](identity/iam/how-it-works.md)
-  * [Execution in AWS](identity/iam/execution-in-aws.md)
-  * [Execution in Terraform](identity/iam/execution-in-terraform.md)
+* [IAM](IAM/README.md)
+  * [How it works](IAM/how-it-works.md)
+  * [Execution in AWS](IAM/execution-aws.md)
+  * [Execution in Terraform](IAM/execution-terraform.md)
