@@ -2,9 +2,6 @@
 
 * [Home](README.md)
 * [Revision Guide](revision.md)
-
-## Compute
-
 * [EC2](EC2/README.md)
   * [How it works](EC2/how-it-works.md)
   * [Execution in AWS](EC2/execution-aws.md)
@@ -21,9 +18,6 @@
   * [How it works](CloudFront/how-it-works.md)
   * [Execution in AWS](CloudFront/execution-in-aws.md)
   * [Execution in Terraform](CloudFront/execution-in-terraform.md)
-
-## Networking
-
 * [VPC](VPC/README.md)
   * [How it works](VPC/how-it-works.md)
   * [Execution in AWS](VPC/execution-aws.md)
@@ -36,9 +30,6 @@
   * [How it works](NAT-gateway/how-it-works.md)
   * [Execution in AWS](NAT-gateway/execution-aws.md)
   * [Execution in Terraform](NAT-gateway/execution-terraform.md)
-
-## Storage & Monitoring
-
 * [EBS](EBS/README.md)
   * [How it works](EBS/how-it-works.md)
   * [Execution in AWS](EBS/execution-aws.md)
@@ -47,9 +38,6 @@
   * [How it works](CloudWatch/how-it-works.md)
   * [Execution in AWS](CloudWatch/execution-aws.md)
   * [Execution in Terraform](CloudWatch/execution-terraform.md)
-
-## Identity
-
 * [IAM](IAM/README.md)
   * [How it works](IAM/how-it-works.md)
   * [Execution in AWS](IAM/execution-aws.md)
