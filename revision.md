@@ -29,4 +29,4 @@ Revise in this order — each service builds on the previous one.
 - [ ] [CloudTrail](CloudTrail/README.md) — API audit trail
 
 ## CI/CD
-- [ ] [CICD](CICD/README.md) — pipelines and automation
+- [ ] [CICD](CICD/README.md) — pipelines and automations
