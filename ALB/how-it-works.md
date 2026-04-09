@@ -20,7 +20,7 @@ User → directly hits EC2 instance
   no way to route /api vs /web differently ❌
 ```
 
-### With ALB :fire:
+### With ALB :fire:fire:
 
 ```
 User → hits ALB DNS
