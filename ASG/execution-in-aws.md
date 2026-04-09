@@ -527,22 +527,6 @@ Step 10 → ASG updated to use latest launch template version
 
 ---
 
-## 🧹 Cleanup — Delete in This Order
-
-> ⚠️ ALB + EC2 costs money even when idle — always delete after lab
-
-1. **Auto Scaling Group** → set desired/min/max all to 0 → wait for instances to terminate → Delete ASG
-2. **Application Load Balancer** → Delete
-3. **Target Group** → Delete
-4. **Launch Template** → Delete (all versions)
-5. **Security Groups** → Delete alb-sg-http and lt-sg-ec2-apache2
-6. **Internet Gateway** → Detach from VPC → Delete
-7. **Subnets** → Delete both
-8. **Route Table** → Delete custom one (not main)
-9. **VPC** → Delete
-
----
-
 ## 🔜 Next Step — Terraform Equivalent
 
 | Console Action | Terraform Resource |
