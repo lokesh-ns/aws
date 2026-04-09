@@ -1,41 +1,35 @@
 # How it works
 
 An Auto Scaling Group (ASG) automatically manages a fleet of EC2 instances,
-scaling out when demand increases and scaling in when demand drops — ensuring
-your application stays available without over-provisioning.
+scaling out when demand increases and scaling in when demand drops.
 
 ## Real World Flow
 
-In production, an ASG sits behind an ALB. When traffic spikes, the ALB health
-checks start seeing increased request load. CloudWatch picks up the CPU or
-request count metric breaching the threshold, triggers a scaling policy, and
-the ASG launches new EC2 instances into the target group. The ALB automatically
-starts routing traffic to them. When traffic drops, the reverse happens —
-instances are terminated gracefully, with the ALB draining connections first
-before the ASG removes them.
+- Traffic hits the ALB, which routes requests to EC2 instances in the ASG
+- CloudWatch monitors metrics — CPU, memory, or request count
+- When a metric breaches the threshold, a scaling policy triggers
+- ASG launches new EC2 instances and registers them with the ALB target group
+- ALB starts routing traffic to new instances once health checks pass
+- When traffic drops, ASG terminates excess instances after ALB drains connections
 
 ## Key Concepts
 
-- **Launch Template** — defines what each instance looks like: AMI, instance
-  type, key pair, security groups, user data script
-- **Desired / Min / Max** — desired is your current target count, min/max are
-  the hard boundaries the ASG will never cross
-- **Scaling Policies** — three types in practice:
-  - *Target Tracking* — most common, e.g. keep average CPU at 50%
-  - *Step Scaling* — scale by fixed increments at defined thresholds
-  - *Scheduled Scaling* — pre-planned scaling for known traffic patterns
-    (e.g. scale up every weekday at 9am)
-- **Health Checks** — ASG can use EC2 status checks or ALB health checks.
-  ALB-based is preferred in production — if an instance fails the ALB check,
-  ASG terminates and replaces it automatically
-- **Cooldown Period** — prevents ASG from launching or terminating instances
-  too rapidly back-to-back after a scaling event
+- **Launch Template** — defines AMI, instance type, key pair, security groups,
+  and user data script for every instance the ASG launches
+- **Desired / Min / Max** — desired is the current target count, min and max
+  are the hard boundaries ASG will never cross
+- **Target Tracking** — most common policy, e.g. keep average CPU at 50%
+- **Step Scaling** — scale by fixed increments at defined thresholds
+- **Scheduled Scaling** — pre-planned scaling for known traffic patterns
+- **Health Checks** — ALB-based health checks preferred over EC2 checks in
+  production; failed instances are terminated and replaced automatically
+- **Cooldown Period** — prevents rapid back-to-back scaling events after a
+  trigger
 
-## In a Banking Context
+## In Production
 
-At ANZ-style environments, ASGs are typically used with:
-- Golden AMIs baked via a CI/CD pipeline (no config drift at launch)
-- User data scripts pulling secrets from Secrets Manager at boot
-- Multi-AZ deployment across at least 2 subnets for fault tolerance
-- ALB target group attachment for zero-downtime rolling replacements
-- CloudWatch alarms feeding scaling policies with SNS notifications to ops teams
+- ASGs are deployed across multiple AZs for fault tolerance
+- Instances are launched from golden AMIs baked via CI/CD pipeline
+- Secrets pulled from Secrets Manager via user data at boot time
+- CloudWatch alarms feed scaling policies with SNS alerts to ops teams
+- ALB connection draining ensures zero downtime during scale-in
