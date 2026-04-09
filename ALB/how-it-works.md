@@ -1,10 +1,10 @@
-# AWS Application Load Balancer — Brief Overview & How It Works in Real Time
+# How it works
 
 ## What is an Application Load Balancer?
 
 An ALB is a managed AWS service that sits in front of your application and distributes incoming HTTP/HTTPS traffic across multiple targets (EC2 instances, containers, Lambda functions) based on rules you define. It operates at **Layer 7** of the OSI model — meaning it understands the actual content of HTTP requests, not just raw TCP packets.
 
----
+***
 
 ## How it Works in Real Time
 
@@ -20,7 +20,7 @@ User → directly hits EC2 instance
   no way to route /api vs /web differently ❌
 ```
 
-### With ALB
+### With ALB :fire:
 
 ```
 User → hits ALB DNS
@@ -33,7 +33,7 @@ User → hits ALB DNS
   if traffic spikes → spreads load across all instances
 ```
 
----
+***
 
 ## Real Time Flow — What Happens in Milliseconds
 
@@ -66,13 +66,14 @@ When a user opens `http://your-alb-dns.amazonaws.com`:
    Total time: typically 10–50ms end to end
 ```
 
----
+***
 
 ## Key Concepts in Plain English
 
 **Listener** — the "ear" of the ALB. It sits on a port (80 or 443) and listens for incoming requests. When a request arrives it checks its rules to decide where to send it.
 
 **Rules** — conditions the ALB evaluates. For example:
+
 ```
 if path = /api/*    → send to backend-servers target group
 if path = /images/* → send to static-servers target group
@@ -85,7 +86,7 @@ if path = /*        → send to default target group
 
 **Round Robin** — default algorithm. Request 1 → EC2-1, Request 2 → EC2-2, Request 3 → EC2-1, and so on evenly across all healthy instances.
 
----
+***
 
 ## Real World Scenarios Where ALB Helps
 
@@ -118,22 +119,22 @@ https://myapp.com/            → frontend target group
 One domain, one ALB, three different backend services ✅
 ```
 
----
+***
 
 ## ALB vs NLB — When to Use Which
 
-| | ALB | NLB |
-|---|---|---|
-| OSI Layer | Layer 7 (HTTP/HTTPS) | Layer 4 (TCP/UDP) |
-| Understands | URLs, headers, cookies | Just IP and port |
-| Use case | Web apps, APIs, microservices | Gaming, IoT, real-time streaming |
-| Latency | ~1-5ms overhead | Ultra low ~100 microseconds |
-| Path-based routing | ✅ Yes | ❌ No |
-| Cost | Slightly higher | Slightly lower |
+|                    | ALB                           | NLB                              |
+| ------------------ | ----------------------------- | -------------------------------- |
+| OSI Layer          | Layer 7 (HTTP/HTTPS)          | Layer 4 (TCP/UDP)                |
+| Understands        | URLs, headers, cookies        | Just IP and port                 |
+| Use case           | Web apps, APIs, microservices | Gaming, IoT, real-time streaming |
+| Latency            | \~1-5ms overhead              | Ultra low \~100 microseconds     |
+| Path-based routing | ✅ Yes                         | ❌ No                             |
+| Cost               | Slightly higher               | Slightly lower                   |
 
 > **Simple rule:** If your app speaks HTTP/HTTPS → use ALB. If you need raw TCP speed → use NLB.
 
----
+***
 
 ## What You Verified in Your Lab
 
@@ -146,19 +147,19 @@ Refresh 3 → ALB → EC2-1 → IP: 12.0.1.142
 Refresh 4 → ALB → EC2-2 → IP: 12.0.3.160
 ```
 
----
+***
 
 ## Interview Quick Reference
 
-| Question | Answer |
-|---|---|
-| What layer does ALB operate at? | Layer 7 — Application layer (HTTP/HTTPS) |
-| What is a listener? | Port on the ALB that receives incoming requests and forwards based on rules |
-| What is a target group? | Logical group of EC2 instances ALB routes traffic to with health checks |
-| What is round-robin? | Default routing — requests distributed evenly across healthy instances in order |
-| How does ALB handle a failed instance? | Health check detects failure → removes instance from rotation automatically |
-| What is path-based routing? | Route `/api/*` to one target group and `/web/*` to another using the same ALB |
-| Why two security groups? | ALB SG controls internet → ALB traffic. EC2 SG controls ALB → instance traffic |
-| What is health check grace period? | Time ALB waits before checking a new instance — allows app to fully start up |
-| Can ALB route to Lambda? | Yes — ALB supports EC2, ECS containers, IP addresses, and Lambda as targets |
-| What is sticky session? | ALB sends same user's requests to same instance using a cookie — useful for session data |
+| Question                               | Answer                                                                                   |
+| -------------------------------------- | ---------------------------------------------------------------------------------------- |
+| What layer does ALB operate at?        | Layer 7 — Application layer (HTTP/HTTPS)                                                 |
+| What is a listener?                    | Port on the ALB that receives incoming requests and forwards based on rules              |
+| What is a target group?                | Logical group of EC2 instances ALB routes traffic to with health checks                  |
+| What is round-robin?                   | Default routing — requests distributed evenly across healthy instances in order          |
+| How does ALB handle a failed instance? | Health check detects failure → removes instance from rotation automatically              |
+| What is path-based routing?            | Route `/api/*` to one target group and `/web/*` to another using the same ALB            |
+| Why two security groups?               | ALB SG controls internet → ALB traffic. EC2 SG controls ALB → instance traffic           |
+| What is health check grace period?     | Time ALB waits before checking a new instance — allows app to fully start up             |
+| Can ALB route to Lambda?               | Yes — ALB supports EC2, ECS containers, IP addresses, and Lambda as targets              |
+| What is sticky session?                | ALB sends same user's requests to same instance using a cookie — useful for session data |
