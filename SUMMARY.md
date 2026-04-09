@@ -74,3 +74,7 @@
   * [How it works](CICD/how-it-works.md)
   * [Execution in AWS](CICD/execution-in-aws.md)
   * [Execution in Terraform](CICD/execution-in-terraform.md)
+* [WAF](WAF/README.md)
+  * [How it works](WAF/how-it-works.md)
+  * [Execution in AWS](WAF/execution-in-aws.md)
+  * [Execution in Terraform](WAF/execution-in-terraform.md)
